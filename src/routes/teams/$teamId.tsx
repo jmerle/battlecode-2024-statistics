@@ -1,6 +1,6 @@
 import { Avatar, Badge, Box, Button, Card, Grid, Group, Image, Stack, Text } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
-import { createLazyFileRoute, Link, Navigate } from '@tanstack/react-router';
+import { createFileRoute, Link, Navigate } from '@tanstack/react-router';
 import { ReactNode } from 'react';
 import { Section } from '../../components/Section.tsx';
 import { StatisticsTable, StatisticsTableRow } from '../../components/StatisticsTable.tsx';
@@ -9,7 +9,7 @@ import { allEligibilities, Eligibility, ScrimmageStatus } from '../../models.ts'
 import { useStore } from '../../store.ts';
 import { formatNumber, formatTeamStatus } from '../../utils/format.ts';
 
-export const Route = createLazyFileRoute('/teams/$teamId')({
+export const Route = createFileRoute('/teams/$teamId')({
   component: TeamDetailPage,
 });
 

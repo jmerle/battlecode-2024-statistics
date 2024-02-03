@@ -1,5 +1,5 @@
 import { Anchor, Checkbox, CheckboxGroupProps, Grid, Group, Stack, Text } from '@mantine/core';
-import { createLazyFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { ReactNode, useCallback } from 'react';
 import { ScrimmageStatisticsSection } from '../components/ScrimmageStatisticsSection.tsx';
 import { Section } from '../components/Section.tsx';
@@ -10,7 +10,7 @@ import { TeamStatisticsSection } from '../components/TeamStatisticsSection.tsx';
 import { Eligibility, ScrimmageStatus } from '../models.ts';
 import { useStore } from '../store.ts';
 
-export const Route = createLazyFileRoute('/')({
+export const Route = createFileRoute('/')({
   component: IndexPage,
 });
 
