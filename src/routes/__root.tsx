@@ -1,6 +1,6 @@
 import { Center, LoadingOverlay } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRoute, Navigate, Outlet } from '@tanstack/react-router';
 import * as localForage from 'localforage';
 import * as pako from 'pako';
 import * as React from 'react';
@@ -25,6 +25,15 @@ localForage.config({
 export const Route = createRootRoute({
   component: Root,
 });
+
+function getInitialRoute(): string | null {
+  const { search } = window.location;
+  if (!search.startsWith('?')) {
+    return null;
+  }
+
+  return search.substring(1);
+}
 
 async function request(url: string): Promise<Response> {
   const response = await fetch(url);
@@ -61,6 +70,8 @@ async function loadData<T extends keyof DataFiles>(key: T): Promise<[DataFiles[T
 }
 
 function Root(): ReactNode {
+  const initialRoute = getInitialRoute();
+
   const teamsTimestamp = useStore(state => state.teamsTimestamp);
   const scrimmagesTimestamp = useStore(state => state.scrimmagesTimestamp);
 
@@ -68,18 +79,24 @@ function Root(): ReactNode {
   const setScrimmages = useStore(state => state.setScrimmages);
 
   useEffect(() => {
+    if (initialRoute !== null) {
+      return;
+    }
+
     (async () => {
       const [data, timestamp] = await loadData('teams');
       setTeams(data, timestamp);
     })();
-  }, []);
 
-  useEffect(() => {
     (async () => {
       const [data, timestamp] = await loadData('scrimmages');
       setScrimmages(data, timestamp);
     })();
-  }, []);
+  }, [initialRoute]);
+
+  if (initialRoute !== null) {
+    return <Navigate to={initialRoute} />;
+  }
 
   if (teamsTimestamp === null || scrimmagesTimestamp === null) {
     return <LoadingOverlay visible />;
