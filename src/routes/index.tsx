@@ -130,7 +130,7 @@ function IndexPage(): ReactNode {
               Based on data scraped from the Battlecode 2024 API at {teamsTimestamp.toString()}.
             </Text>
             <Text>
-              The source code and raw data are available in the <Anchor href="https://github.com/jmerle/battlecode-2024-statistics">jmerle/battlecode-2024-statistics</Anchor> GitHub repository.
+              The source code and raw data are available in the <Anchor href="https://github.com/jmerle/battlecode-2024-statistics" target="_blank">jmerle/battlecode-2024-statistics</Anchor> GitHub repository.
             </Text>
             <Text>
               Previous editions: <Anchor href="https://jmerle.github.io/battlecode-2022-statistics/" target="_blank">2022</Anchor> <Anchor href="https://jmerle.github.io/battlecode-2023-statistics/" target="_blank">2023</Anchor>
