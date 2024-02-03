@@ -1,0 +1,125 @@
+{
+  "name": "battlecode-2024-statistics",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "scrape": "tsx scripts/scrape.ts",
+    "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:eslint": "eslint --format codeframe '**/*.ts' '**/*.tsx'",
+    "lint:prettier": "prettier --check '**/*.{ts,tsx,css,html,json,yml}'",
+    "fix": "pnpm run --sequential \"/^fix:.*/\"",
+    "fix:eslint": "pnpm lint:eslint --fix",
+    "fix:prettier": "prettier --write '**/*.{ts,tsx,css,html,json,yml}'"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.5.1",
+    "@mantine/hooks": "^7.5.1",
+    "@mantine/modals": "^7.5.1",
+    "@tabler/icons-react": "^2.47.0",
+    "@tanstack/react-router": "^1.15.16",
+    "fast-equals": "^5.0.1",
+    "highcharts": "^11.3.0",
+    "highcharts-react-official": "^3.2.1",
+    "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
+    "p-queue": "^8.0.1",
+    "pako": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@tanstack/router-devtools": "^1.15.16",
+    "@tanstack/router-vite-plugin": "^1.15.11",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.16",
+    "@types/pako": "^2.0.3",
+    "@types/react": "^18.2.52",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-formatter-codeframe": "^7.32.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.33.2",
+    "postcss": "^8.4.33",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.2.4",
+    "tsx": "^4.7.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.12"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "import"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-member-accessibility": "error",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        {
+          "allowExpressions": true
+        }
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": [
+        "error",
+        {
+          "allowArgumentsExplicitlyTypedAsAny": true
+        }
+      ],
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
+  }
+}
