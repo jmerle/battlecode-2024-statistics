@@ -26,7 +26,7 @@ export function TeamDetailPage(): ReactNode {
     return <Navigate to="/" />;
   }
 
-  let globalRank = 0;
+  let globalRank = 1;
   const rankByEligibility = Object.fromEntries(allEligibilities.map(e => [e, 1])) as Record<Eligibility, number>;
 
   const sortedTeams = [...teams].sort((a, b) => b.profile.rating - a.profile.rating);
